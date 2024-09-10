@@ -35,5 +35,33 @@ namespace ApiCursoLinqCanal.Controllers
         }
 
 
+        [HttpGet]
+        [Route("/ObterAlimentosPorDescricao/{kcal}")]
+        public object ObterAlimentosPorDescricao(int kcal)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Calorias == kcal).Select(s=>s.Nome).ToList();
+
+        }
+
+
+        [HttpGet]
+        [Route("/SomaKakAlimento/{kcal}")]
+        public object SomaKakAlimento(int kcal)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Calorias == kcal).Sum(s=>s.Calorias);    
+
+        }
+
+
     }
 }

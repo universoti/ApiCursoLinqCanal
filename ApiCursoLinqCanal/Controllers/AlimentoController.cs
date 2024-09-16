@@ -161,7 +161,21 @@ namespace ApiCursoLinqCanal.Controllers
             //jeito 1 
             Alimentos alimentos = new();
             return alimentos.PopularDados().Count();    //exemplo1 
-            //return alimentos.PopularDados().Where(s=>s.Calorias==20).Count();  //exemplo2  é possivel filtrar com where 
+           
+
+        }
+
+        [HttpGet]
+        [Route("/ContarAlimento/{cal}")]
+        public object ContarAlimento(int cal)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s=>s.Calorias==cal).Count();    //exemplo
+
 
         }
 

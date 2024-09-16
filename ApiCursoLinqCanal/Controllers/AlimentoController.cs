@@ -179,5 +179,102 @@ namespace ApiCursoLinqCanal.Controllers
 
         }
 
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorParteDescricao/{descr}")]
+        public object BuscarAlimentoPorParteDescricao(string descr)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s=>s.Nome.Contains(descr));
+            
+        }
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoFirstDefaut/{descr}")]
+        public object BuscarAlimentoPorDescricaoFirstDefaut(string descr)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Nome.Contains(descr)).FirstOrDefault();
+
+        }
+
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoPrimeiro/{descr}")]
+        public object BuscarAlimentoPorDescricaoPrimeiro(string descr)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Nome.Contains(descr)).FirstOrDefault();
+
+        }
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoLastDefaut/{descr}")]
+        public object BuscarAlimentoPorDescricaoLastDefaut(string descr)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Nome.Contains(descr)).LastOrDefault();
+
+        }
+
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoUltimo/{descr}")]
+        public object BuscarAlimentoPorDescricaoUltimo(string descr)
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Where(s => s.Nome.Contains(descr)).Last();
+
+        }
+
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoOrdenadoNatural/")]
+        public object BuscarAlimentoPorDescricaoOrdenadoNatural()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().OrderBy(s => s.Nome);
+
+        }
+
+
+        [HttpGet]
+        [Route("/BuscarAlimentoPorDescricaoOrdenadoDescendente/")]
+        public object BuscarAlimentoPorDescricaoOrdenadoDescendente()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().OrderByDescending(s => s.Nome);
+
+        }
+
+
     }
 }

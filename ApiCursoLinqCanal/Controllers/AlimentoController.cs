@@ -302,5 +302,39 @@ namespace ApiCursoLinqCanal.Controllers
         }
 
 
+        [HttpGet]
+        [Route("/AgregateKcal/")]
+        public object AgregateKcal()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            var ali = alimentos.PopularDados().Aggregate(0m, (total, produto) => total + (decimal)produto.Calorias);
+
+
+            return ali;
+
+        }
+
+
+        [HttpGet]
+        [Route("/AgregateNomes/")]
+        public object AgregateNomes()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            var ali = alimentos.PopularDados().Select(s=>s.Nome).Aggregate((nomes, nomeatual) => nomes+ Environment.NewLine+ nomeatual);
+
+
+            return ali;
+
+        }
+
+
     }
 }

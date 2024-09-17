@@ -275,6 +275,32 @@ namespace ApiCursoLinqCanal.Controllers
 
         }
 
+        [HttpGet]
+        [Route("/BuscarKcalAlimentoDistinguidoSimples/")]
+        public object BuscarKcalAlimentoDistinguidoSimples()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().Distinct().Select(s => s.Calorias); ;
+
+        }
+
+        [HttpGet]
+        [Route("/BuscarKcalAlimentoDistinguido/")]
+        public object BuscarKcalAlimentoDistinguido()
+        {
+            //para filtrar informaçoes vamos utilizar o where 
+            //lambda sao expressoes para darmos nomes aos nosso atributos - exemplo -> letra => e traz o campo exemplo s=>s.calorias
+            //s=>  exppresao lambda, da um nome ou um apelido para os atributos quem vem da lista
+            //jeito 1 
+            Alimentos alimentos = new();
+            return alimentos.PopularDados().DistinctBy(s => s.Calorias).Select(s => s.Calorias);//.OrderByDescending(s=>s);
+
+        }
+
 
     }
 }
